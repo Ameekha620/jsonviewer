@@ -1,7 +1,21 @@
 {
-	// See http://go.microsoft.com/fwlink/?LinkId=827846
-	// for the documentation about the extensions.json format
-	"recommendations": [
-		"eg2.tslint"
-	]
+  "manifest_version": 3,
+  "name": "Google Meet Enhancer",
+  "version": "1.0",
+  "description": "Extracts live captions from Google Meet.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["https://meet.google.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
 }
+
